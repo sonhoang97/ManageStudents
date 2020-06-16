@@ -43,5 +43,7 @@
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.40" level="project" />
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.47" level="project" />
     <orderEntry type="library" name="mysql:mysql-connector-java:8.0.15" level="project" />
+    <orderEntry type="library" name="org.apache.directory.studio:org.apache.commons.codec:1.8" level="project" />
+    <orderEntry type="library" name="org.apache.commons:commons-csv:1.4" level="project" />
   </component>
 </module>

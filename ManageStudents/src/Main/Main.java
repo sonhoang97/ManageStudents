@@ -1,20 +1,29 @@
 package Main;
 
+import DAO.CsvDAO;
 import DAO.StudentDAO;
 import Model.Student;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        List<Student> ds= StudentDAO.layDanhSachSinhVien();
-        for(int i=0; i<ds.size(); i++){
-            Student sv=ds.get(i);
-            System.out.println("MSSV: "+sv.getMssv());
-            System.out.println("Họ và tên: "+sv.getName());
-            System.out.println("Giới tính: " +
-                    sv.isSex());
-            System.out.println("Cmnd: "+ sv.getCmnd());
-        }
+    public static void main(String[] args) throws IOException {
+//        StudentDAO studentDAO = new StudentDAO();
+//        List<Student> ds= new ArrayList<Student>();
+//        ds= studentDAO.getListStudent();
+//
+//        Student std = studentDAO.getStudent(1512462);
+//        CsvDAO csvDAO = new CsvDAO();
+//        List<Student> ds = csvDAO.getListStudentCsv();
+//        for(int i=0; i<ds.size(); i++){
+//            Student sv=ds.get(i);
+//            System.out.println("MSSV: "+sv.getMssv());
+//            System.out.println("Họ và tên: "+sv.getName());
+//            System.out.println("Giới tính: " +
+//                    sv.isSex());
+//            System.out.println("Cmnd: "+ sv.getCmnd());
+//        }
     }
 }
