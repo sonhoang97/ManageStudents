@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate
+Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class catalog="managestudents" name="Model.Student" table="student">
+        <id name="mssv" type="int">
+            <column name="Mssv"/>
+            <generator class="assigned"/>
+        </id>
+        <property name="name" type="string">
+            <column length="45" name="Name"/>
+        </property>
+        <property name="sex" type="boolean">
+            <column name="Sex"/>
+        </property>
+        <property name="cmnd" type="int">
+            <column name="Cmnd"/>
+        </property>
+    </class>
+</hibernate-mapping>
