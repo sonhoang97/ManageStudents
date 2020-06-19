@@ -19,11 +19,11 @@ public class Student implements java.io.Serializable{
         this.mssv = mssv;
     }
 
-    public boolean isSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(boolean sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 
@@ -36,6 +36,6 @@ public class Student implements java.io.Serializable{
     }
 
     private int mssv;
-    private boolean sex;
+    private String sex;
     private int cmnd;
 }

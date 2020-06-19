@@ -11,8 +11,8 @@ Mapping DTD 3.0//EN"
         <property name="name" type="string">
             <column length="45" name="Name"/>
         </property>
-        <property name="sex" type="boolean">
-            <column name="Sex"/>
+        <property name="sex" type="string">
+            <column length="45" name="Sex"/>
         </property>
         <property name="cmnd" type="int">
             <column name="Cmnd"/>

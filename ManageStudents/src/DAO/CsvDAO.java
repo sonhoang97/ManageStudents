@@ -18,15 +18,14 @@ public class CsvDAO {
 
     public List<Student> getListStudentCsv() throws IOException {
         List<Student> students = new ArrayList<Student>();
-        String path = "/DataCSV/students.csv";
+        String path = "F:/java/Project/github/ManageStudents/ManageStudents//src/DataCSV/students.csv";
         BufferedReader reader = Files.newBufferedReader(Paths.get(path));
-        CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withHeader("mssv", "name", "sex", "cmnd").withIgnoreHeaderCase().withTrim());
+        CSVParser csvParser = new CSVParser(reader,CSVFormat.EXCEL);
         for (CSVRecord csvRecord : csvParser) {
             Student std = new Student();
-            std.setMssv(Integer.parseInt(csvRecord.get(0)));
-            std.setName(csvRecord.get(1));
-            if (csvRecord.get(2) == "Nam") std.setSex(true);
-            else std.setSex(false);
+            std.setMssv(Integer.parseInt(csvRecord.get(1)));
+            std.setName(csvRecord.get(0));
+            std.setSex(csvRecord.get(2));
             std.setCmnd(Integer.parseInt(csvRecord.get(3)));
             students.add(std);
         }
