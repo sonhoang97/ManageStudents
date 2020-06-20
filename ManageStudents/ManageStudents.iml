@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="Config:hibernate.cfg.xml" value="f39f8c51-e98d-45b3-bec5-d3be0258c687" />
+          <unit-entry name="Config:hibernate.cfg.xml" value="6bfee2bd-55eb-476a-bd44-35a90a6a752e" />
           <unit-entry name="hibernate.cfg.xml" value="f39f8c51-e98d-45b3-bec5-d3be0258c687" />
         </datasource-map>
         <naming-strategy-map />
@@ -45,5 +45,7 @@
     <orderEntry type="library" name="mysql:mysql-connector-java:8.0.15" level="project" />
     <orderEntry type="library" name="org.apache.directory.studio:org.apache.commons.codec:1.8" level="project" />
     <orderEntry type="library" name="org.apache.commons:commons-csv:1.4" level="project" />
+    <orderEntry type="library" name="org.apache.poi:poi:4.1.1" level="project" />
+    <orderEntry type="library" name="org.apache.poi:poi-ooxml:4.1.1" level="project" />
   </component>
 </module>

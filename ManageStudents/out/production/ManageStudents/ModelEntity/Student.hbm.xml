@@ -3,7 +3,7 @@
 Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class catalog="managestudents" name="Model.Student" table="student">
+    <class catalog="managestudents" name="ModelEntity.Student" table="student">
         <id name="mssv" type="int">
             <column name="Mssv"/>
             <generator class="assigned"/>
@@ -17,5 +17,8 @@ Mapping DTD 3.0//EN"
         <property name="cmnd" type="int">
             <column name="Cmnd"/>
         </property>
+        <many-to-one class="ModelEntity.Class" name="classStd" fetch="select">
+            <column length="45" name="classId" not-null="false"/>
+        </many-to-one>
     </class>
 </hibernate-mapping>

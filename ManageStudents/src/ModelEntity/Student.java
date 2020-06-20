@@ -1,4 +1,4 @@
-package Model;
+package ModelEntity;
 
 public class Student implements java.io.Serializable{
     private String name;
@@ -38,4 +38,13 @@ public class Student implements java.io.Serializable{
     private int mssv;
     private String sex;
     private int cmnd;
+    private Class classStd;
+
+    public Class getClassStd() {
+        return classStd;
+    }
+
+    public void setClassStd(Class classStd) {
+        this.classStd = classStd;
+    }
 }

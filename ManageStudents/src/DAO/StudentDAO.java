@@ -1,6 +1,6 @@
 package DAO;
 
-import Model.Student;
+import ModelEntity.Student;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

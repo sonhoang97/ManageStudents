@@ -11,6 +11,9 @@
         </property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">12345</property>
-        <mapping resource="Model/Student.hbm.xml"/>
+        <mapping resource="ModelEntity/Student.hbm.xml"/>
+        <mapping resource="ModelEntity/Class.hbm.xml"/>
+        <mapping resource="ModelEntity/Subject.hbm.xml"/>
+        <mapping resource="ModelEntity/Schedule.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>
