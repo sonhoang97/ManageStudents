@@ -1,22 +1,33 @@
 package ModelEntity;
 
+import javax.persistence.*;
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Class {
+@Entity
+@Table(name = "class")
+public class Class implements Serializable {
 
+    @Id
+    @Column(name = "Id")
     private String Id;
+
+    @Column(name = "ClassName")
     private String ClassName;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classStd")
     private Set<Student> Students = new HashSet<Student>(0);
-    private Set<Schedule> Schedules = new HashSet<Schedule>(0);
 
-    public Set<Schedule> getSchedules() {
-        return Schedules;
-    }
-
-    public void setSchedules(Set<Schedule> schedules) {
-        Schedules = schedules;
-    }
+//    private Set<Schedule> Schedules = new HashSet<Schedule>(0);
+//
+//    public Set<Schedule> getSchedules() {
+//        return Schedules;
+//    }
+//
+//    public void setSchedules(Set<Schedule> schedules) {
+//        Schedules = schedules;
+//    }
 
 
     public Set<Student> getStudents() {

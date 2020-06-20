@@ -66,6 +66,9 @@ public class excelDAO {
                         String classId = (String) getCellValue(cell);
                         std.setClassStd(clsDAO.getClass(classId));
                         break;
+                    case 5:
+                        std.setPassword((String) getCellValue(cell));
+                        break;
                     default:
                         break;
                 }

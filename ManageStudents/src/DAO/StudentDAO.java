@@ -1,6 +1,7 @@
 package DAO;
 
 import ModelEntity.Student;
+import ModelView.UserViewModel;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,7 +15,7 @@ public class StudentDAO {
 
     }
 
-    public List<Student> getListStudent() {
+    public List<Student> getStudents() {
         List<Student> ds = null;
         Session session = HibernateUtil.getSessionFactory().openSession();
         try {
@@ -22,7 +23,6 @@ public class StudentDAO {
             Query query = session.createQuery(hql);
             ds = query.list();
         } catch (HibernateException ex) {
-//Log the exception
             System.err.println(ex);
         } finally {
             session.close();
@@ -62,5 +62,23 @@ public class StudentDAO {
             session.close();
         }
         return true;
+    }
+
+    public boolean checkLogin(UserViewModel user){
+        if(user == null) return false;
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            String hql = "select std from Student std where  std.mssv = :mssv and std.password = :password";
+            Query query = session.createQuery(hql);
+            List<Object[]> StdData = query.setInteger("mssv", Integer.valueOf(user.Username))
+                    .setString("password", user.Password).list();
+            if(StdData.isEmpty()) return false;
+            return true;
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return false;
     }
 }

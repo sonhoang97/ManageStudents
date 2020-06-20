@@ -1,7 +1,19 @@
 package ModelEntity;
 
-public class Subject {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "subject")
+public class Subject implements Serializable {
+    @Id
+    @Column(name = "Id")
     private String Id;
+
+    @Column(name = "SubjectName")
     private String SubjectName;
 
     public String getId() {

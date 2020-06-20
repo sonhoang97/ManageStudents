@@ -11,7 +11,10 @@ public class ClassDAO {
 
     public boolean AddClassDB(Class cls){
         Session session = HibernateUtil.getSessionFactory().openSession();
+        if(getClass(cls.getId())!=null) return false;
+
         Transaction transaction = null;
+
         try {
             transaction = session.beginTransaction();
             session.save(cls);

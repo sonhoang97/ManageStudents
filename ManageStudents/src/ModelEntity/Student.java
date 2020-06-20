@@ -1,7 +1,31 @@
 package ModelEntity;
 
-public class Student implements java.io.Serializable{
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name = "student")
+public class Student implements Serializable {
+
+    @Id
+    @Column(name = "Mssv")
+    private int mssv;
+
+    @Column(name = "Name")
     private String name;
+
+    @Column(name = "Sex")
+    private String sex;
+
+    @Column(name = "Cmnd")
+    private int cmnd;
+
+    @Column(name = "Password")
+    private String password;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ClassId", referencedColumnName = "Id")
+    private Class classStd;
 
     public String getName() {
         return name;
@@ -35,10 +59,13 @@ public class Student implements java.io.Serializable{
         this.cmnd = cmnd;
     }
 
-    private int mssv;
-    private String sex;
-    private int cmnd;
-    private Class classStd;
+    public String getPassword() {
+        return this.password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public Class getClassStd() {
         return classStd;

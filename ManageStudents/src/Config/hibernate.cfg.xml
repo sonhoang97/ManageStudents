@@ -9,11 +9,13 @@
         <property name="hibernate.connection.url">
             jdbc:mysql://localhost:3306/managestudents
         </property>
+        <property name="current_session_context_class">thread</property>
         <property name="hibernate.connection.username">root</property>
         <property name="hibernate.connection.password">12345</property>
-        <mapping resource="ModelEntity/Student.hbm.xml"/>
-        <mapping resource="ModelEntity/Class.hbm.xml"/>
-        <mapping resource="ModelEntity/Subject.hbm.xml"/>
-        <mapping resource="ModelEntity/Schedule.hbm.xml"/>
+        <property name="hibernate.enable_lazy_load_no_trans">true</property>
+        <mapping class="ModelEntity.Student" />
+        <mapping class="ModelEntity.Class" />
+        <mapping class="ModelEntity.Subject" />
+        <mapping class="ModelEntity.Schedule" />
     </session-factory>
 </hibernate-configuration>

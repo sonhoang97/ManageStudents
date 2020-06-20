@@ -1,10 +1,25 @@
 package ModelEntity;
 
-public class Schedule {
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "schedule")
+public class Schedule implements Serializable {
+
+    @Id
+    @Column(name = "Id")
     private int Id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "ClassId", referencedColumnName = "Id")
     private Class ClassSch;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SubjectId", referencedColumnName = "Id")
     private Subject SubjectSch;
+
+    @Column(name = "Room")
     private String Room;
 
     public int getId() {
