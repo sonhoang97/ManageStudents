@@ -30,8 +30,9 @@ public class excelDAO {
     public List<Student> getStudentsExcel() throws IOException {
         List<Student> students = new ArrayList<Student>();
         ClassDAO clsDAO = new ClassDAO();
-        String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
-        InputStream inputStream = new FileInputStream(new File(path));
+        String filePath = new File("").getAbsolutePath();
+        String path = "/src/Data/managestudents.xlsx";
+        InputStream inputStream = new FileInputStream(new File(filePath+path));
         Workbook workbook = getWorkbook(inputStream, path);
         Sheet sheetClass = workbook.getSheetAt(0);
 
@@ -71,7 +72,8 @@ public class excelDAO {
                         std.setClassStd(clsDAO.getClass(classId));
                         break;
                     case 5:
-                        std.setPassword((String) getCellValue(cell));
+                        Object a = getCellValue(cell);
+                        std.setPassword(String.valueOf(a));
                         break;
                     default:
                         break;
@@ -88,12 +90,13 @@ public class excelDAO {
     //
     public List<Schedule> getSchedulesExcel() throws IOException {
         List<Schedule> Schedules = new ArrayList<Schedule>();
-        String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
+        String filePath = new File("").getAbsolutePath();
+        String path = "/src/Data/managestudents.xlsx";
+        InputStream inputStream = new FileInputStream(new File(filePath+path));
 
         ClassDAO clsDAO = new ClassDAO();
         SubjectDAO sbjDAO = new SubjectDAO();
 
-        InputStream inputStream = new FileInputStream(new File(path));
         Workbook workbook = getWorkbook(inputStream, path);
         Sheet sheetClass = workbook.getSheetAt(3);
 
@@ -138,10 +141,11 @@ public class excelDAO {
     }
 
     public List<Class> getClassesExcel() throws IOException {
-        String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
+        String filePath = new File("").getAbsolutePath();
+        String path = "/src/Data/managestudents.xlsx";
+        InputStream inputStream = new FileInputStream(new File(filePath+path));
 
         List<Class> Classes = new ArrayList<Class>();
-        InputStream inputStream = new FileInputStream(new File(path));
         Workbook workbook = getWorkbook(inputStream, path);
         Sheet sheetClass = workbook.getSheetAt(1);
 
@@ -183,10 +187,10 @@ public class excelDAO {
     }
 
     public List<Subject> getSubjectsExcel() throws IOException {
-        String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
-
+        String filePath = new File("").getAbsolutePath();
+        String path = "/src/Data/managestudents.xlsx";
+        InputStream inputStream = new FileInputStream(new File(filePath+path));
         List<Subject> Subjects = new ArrayList<Subject>();
-        InputStream inputStream = new FileInputStream(new File(path));
         Workbook workbook = getWorkbook(inputStream, path);
         Sheet sheetClass = workbook.getSheetAt(2);
 
@@ -226,10 +230,12 @@ public class excelDAO {
     }
 
     public List<Transcript> getTranscriptExcel() throws IOException {
-        String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
+
+        String filePath = new File("").getAbsolutePath();
+        String path = "/src/Data/managestudents.xlsx";
+        InputStream inputStream = new FileInputStream(new File(filePath+path));
 
         List<Transcript> trans = new ArrayList<Transcript>();
-        InputStream inputStream = new FileInputStream(new File(path));
         Workbook workbook = getWorkbook(inputStream, path);
         Sheet sheetClass = workbook.getSheetAt(4);
 
@@ -277,6 +283,7 @@ public class excelDAO {
                         Class cls = classDAO.getClass(classId);
                         tran.setClassTrans(cls);
                         break;
+
 
                     default:
                         break;

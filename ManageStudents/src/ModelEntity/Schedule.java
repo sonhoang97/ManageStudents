@@ -35,7 +35,7 @@ public class Schedule implements Serializable {
     }
 
     public void setClassSch(Class classSch) {
-        classSch = classSch;
+        this.classSch = classSch;
     }
 
     public Subject getSubjectSch() {
@@ -43,7 +43,7 @@ public class Schedule implements Serializable {
     }
 
     public void setSubjectSch(Subject subjectSch) {
-        subjectSch = subjectSch;
+        this.subjectSch = subjectSch;
     }
 
     public String getRoom() {

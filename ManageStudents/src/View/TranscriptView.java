@@ -139,8 +139,20 @@ public class TranscriptView extends JFrame {
                 }
             }
         });
+        transcriptTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        transcriptTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+        transcriptTable.getColumnModel().getColumn(0).setPreferredWidth(60);
+        transcriptTable.getColumnModel().getColumn(1).setPreferredWidth(120);
+        transcriptTable.getColumnModel().getColumn(2).setPreferredWidth(70);
+        transcriptTable.getColumnModel().getColumn(3).setPreferredWidth(70);
+        transcriptTable.getColumnModel().getColumn(4).setPreferredWidth(70);
+        transcriptTable.getColumnModel().getColumn(5).setPreferredWidth(70);
+        transcriptTable.getColumnModel().getColumn(6).setPreferredWidth(60);
+        transcriptTable.getColumnModel().getColumn(7).setPreferredWidth(120);
+        transcriptTable.getColumnModel().getColumn(8).setPreferredWidth(60);
+
+
+
         sp = new JScrollPane(transcriptTable);
         this.add(sp);
         this.add(backBtn);
