@@ -22,6 +22,17 @@ public class Class implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classSch")
     private Set<Schedule> Schedules = new HashSet<Schedule>(0);
 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classTrans")
+    private Set<Transcript> transcripts = new HashSet<Transcript>(0);
+
+    public Set<Transcript> getTranscripts() {
+        return transcripts;
+    }
+
+    public void setTranscripts(Set<Transcript> transcripts) {
+        this.transcripts = transcripts;
+    }
+
     public Set<Schedule> getSchedules() {
         return Schedules;
     }

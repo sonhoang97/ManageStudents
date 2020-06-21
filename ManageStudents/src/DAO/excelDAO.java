@@ -1,10 +1,8 @@
 package DAO;
 
-import ModelEntity.Class;
-import ModelEntity.Schedule;
-import ModelEntity.Student;
+import ModelEntity.*;
 
-import ModelEntity.Subject;
+import ModelEntity.Class;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
@@ -20,7 +18,13 @@ import java.util.Iterator;
 import java.util.List;
 
 public class excelDAO {
+    private StudentDAO studentDAO;
+    private ClassDAO classDAO;
+    private SubjectDAO subjectDAO;
     public excelDAO() {
+        studentDAO = new StudentDAO();
+        classDAO = new ClassDAO();
+        subjectDAO = new SubjectDAO();
     }
 
     public List<Student> getStudentsExcel() throws IOException {
@@ -80,7 +84,8 @@ public class excelDAO {
         inputStream.close();
         return students;
     }
-//
+
+    //
     public List<Schedule> getSchedulesExcel() throws IOException {
         List<Schedule> Schedules = new ArrayList<Schedule>();
         String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
@@ -218,6 +223,71 @@ public class excelDAO {
         workbook.close();
         inputStream.close();
         return Subjects;
+    }
+
+    public List<Transcript> getTranscriptExcel() throws IOException {
+        String path = "F:/java/Project/github/ManageStudents/ManageStudents/src/Data/managestudents.xlsx";
+
+        List<Transcript> trans = new ArrayList<Transcript>();
+        InputStream inputStream = new FileInputStream(new File(path));
+        Workbook workbook = getWorkbook(inputStream, path);
+        Sheet sheetClass = workbook.getSheetAt(4);
+
+        Iterator<Row> iterator = sheetClass.iterator();
+        while (iterator.hasNext()) {
+            Row nextRow = iterator.next();
+            if (nextRow.getRowNum() == 0) {
+                // Ignore header
+                continue;
+            }
+            Iterator<Cell> cellIterator = nextRow.cellIterator();
+            Transcript tran = new Transcript();
+            while (cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                Object cellValue = getCellValue(cell);
+                if (cellValue == null || cellValue.toString().isEmpty()) {
+                    continue;
+                }
+                int columnIndex = cell.getColumnIndex();
+                switch (columnIndex) {
+                    case 0:
+                        int mssv = ((Double) cellValue).intValue();
+                        Student std = studentDAO.getStudent(mssv);
+                        tran.setStudentTrans(std);
+                        break;
+                    case 1:
+                        tran.setMidTerm((Double) getCellValue(cell));
+                        break;
+                    case 2:
+                        tran.setEndTerm((Double) getCellValue(cell));
+                        break;
+                    case 3:
+                        tran.setBonus((Double) getCellValue(cell));
+                        break;
+                    case 4:
+                        tran.setPoint((Double) getCellValue(cell));
+                        break;
+                    case 5:
+                        String subjectId = (String) getCellValue(cell);
+                        Subject sbj = subjectDAO.getSubjectDB(subjectId);
+                        tran.setSubjectTrans(sbj);
+                        break;
+                    case 6:
+                        String classId = (String) getCellValue(cell);
+                        Class cls = classDAO.getClass(classId);
+                        tran.setClassTrans(cls);
+                        break;
+
+                    default:
+                        break;
+                }
+
+            }
+            trans.add(tran);
+        }
+        workbook.close();
+        inputStream.close();
+        return trans;
     }
 
     private static Workbook getWorkbook(InputStream inputStream, String excelFilePath) throws IOException {

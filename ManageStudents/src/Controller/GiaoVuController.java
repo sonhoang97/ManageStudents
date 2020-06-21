@@ -2,10 +2,8 @@ package Controller;
 
 import DAO.*;
 
+import ModelEntity.*;
 import ModelEntity.Class;
-import ModelEntity.Schedule;
-import ModelEntity.Student;
-import ModelEntity.Subject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,12 +16,14 @@ public class GiaoVuController {
     private ClassDAO classDAO;
     private ScheduleDAO scheduleDAO;
     private SubjectDAO subjectDAO;
+    private TranscriptDAO transcriptDAO;
     public GiaoVuController() {
         this.excelDAO = new excelDAO();
         this.classDAO = new ClassDAO();
         this.scheduleDAO = new ScheduleDAO();
         this.studentDAO = new StudentDAO();
         this.subjectDAO = new SubjectDAO();
+        this.transcriptDAO = new TranscriptDAO();
     }
     public String[] getClassesId(){
         List<Class> clses = classDAO.getAllClasses();
@@ -117,4 +117,10 @@ public class GiaoVuController {
     }
 
     public List<Subject> getSubjectsByClass(String classId){return subjectDAO.getSubjectsByClass(classId);}
+
+    public List<Transcript> getTranscripts(){
+        return transcriptDAO.getTranscripts();
+    }
+
+    public boolean updateTranscript(Transcript tran){return transcriptDAO.updateTranscripts(tran);}
 }

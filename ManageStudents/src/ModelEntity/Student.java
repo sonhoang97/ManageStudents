@@ -2,6 +2,8 @@ package ModelEntity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "student")
@@ -26,6 +28,9 @@ public class Student implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ClassId", referencedColumnName = "Id")
     private Class classStd;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "studentTrans")
+    private Set<Transcript> transcripts = new HashSet<Transcript>(0);
 
     public String getName() {
         return name;

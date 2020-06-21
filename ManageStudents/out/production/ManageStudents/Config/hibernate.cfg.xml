@@ -17,5 +17,7 @@
         <mapping class="ModelEntity.Class" />
         <mapping class="ModelEntity.Subject" />
         <mapping class="ModelEntity.Schedule" />
+        <mapping class="ModelEntity.Transcript" />
+
     </session-factory>
 </hibernate-configuration>

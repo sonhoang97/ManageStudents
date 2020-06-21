@@ -15,7 +15,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="ManageStudents" />
+          <factory-entry name="ManageStudents" value="6bfee2bd-55eb-476a-bd44-35a90a6a752e" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>

@@ -27,7 +27,7 @@ public class LoginView extends JFrame implements ActionListener {
     private StudentDAO stdDAO;
     private ClassesStdView classesStdView;
     private ScheduleView scheduleView;
-
+    private TranscriptView transcriptView;
     public LoginView() {
         initComponents();
         this.stdDAO = new StudentDAO();
@@ -100,9 +100,11 @@ public class LoginView extends JFrame implements ActionListener {
 //                studentController.showStudentView();
 //                classesStdView = new ClassesStdView();
 //                    classesStdView.showClassStdView();
-                scheduleView = new ScheduleView();
-                scheduleView.showViewSchedule();
-                setVisible(false);
+//                scheduleView = new ScheduleView();
+//                scheduleView.showViewSchedule();
+                this.transcriptView = new TranscriptView();
+                this.transcriptView.showViewTranscript();
+                        setVisible(false);
             } else {
                 showMessage("username hoặc password không đúng.");
             }

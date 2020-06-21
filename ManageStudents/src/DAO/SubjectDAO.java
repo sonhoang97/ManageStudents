@@ -63,4 +63,20 @@ public class SubjectDAO {
         }
         return new ArrayList<Subject>();
     }
+
+    public List<Subject> getSubjectByName(String subjectName){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            String hql = "select sbj from Subject sbj where sbj.SubjectName = :subjectName";
+            Query query = session.createQuery(hql);
+            List<Subject> subjects = query.setString("subjectName", subjectName).list();
+            return subjects;
+
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<Subject>();
+    }
 }
