@@ -39,11 +39,12 @@ public class TranscriptView extends JFrame {
     private SubjectDAO subjectDAO;
     private ChangePointView changePointView;
 
+    private JButton backBtn;
     public TranscriptView() {
         this.studentDAO = new StudentDAO();
         this.classDAO = new ClassDAO();
         this.subjectDAO = new SubjectDAO();
-
+    this.backBtn = new JButton();
         this.transcriptTable = new JTable();
         this.gvController = new GiaoVuController();
         this.jScrollPaneTranscriptTable = new JScrollPane();
@@ -60,6 +61,14 @@ public class TranscriptView extends JFrame {
         transcripts = transcriptDAO.getTranscripts();
         showTranscript(transcripts);
 
+        backBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuGiaoVuView menu = new MenuGiaoVuView();
+                menu.showViewGiaoVu();
+                setVisible(false);
+            }
+        });
 
         searchClassCB = new JComboBox(new String[]{"All"});
         String[] searchClassStr = gvController.getClassesId();
@@ -134,6 +143,7 @@ public class TranscriptView extends JFrame {
         transcriptTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         sp = new JScrollPane(transcriptTable);
         this.add(sp);
+        this.add(backBtn);
         this.add(searchTranscriptLabel);
         this.add(searchClassCB);
         this.add(searchSubjectCB);
@@ -163,6 +173,9 @@ public class TranscriptView extends JFrame {
 
         layout.putConstraint(SpringLayout.NORTH, sp, 10, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST, sp, 280, SpringLayout.NORTH, this);
+
+        layout.putConstraint(SpringLayout.NORTH, backBtn, 120, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, backBtn, 10, SpringLayout.NORTH, this);
         this.setSize(750, 300);
         this.setVisible(true);
     }
@@ -194,6 +207,7 @@ public class TranscriptView extends JFrame {
         searchClassLabel = new JLabel("Lớp: ");
         searchSubjectLabel = new JLabel("Môn: ");
         searchTranscriptBtn.setText("Tìm kiếm");
+        backBtn.setText("Trở lại");
     }
 
     public void showViewTranscript() {

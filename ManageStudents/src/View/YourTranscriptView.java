@@ -7,6 +7,8 @@ import ModelEntity.Transcript;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +51,16 @@ public class YourTranscriptView extends JFrame{
         showTranscript(trans);
         transcriptTable.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
         sp = new JScrollPane(transcriptTable);
+
+        logOutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginView login = new LoginView();
+                login.showDialog();
+                setVisible(false);
+            }
+        });
+
         this.add(sp);
         this.add(mssvLabel);
         this.add(mssvBindingLabel);

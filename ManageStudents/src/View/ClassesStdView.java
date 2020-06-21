@@ -23,6 +23,8 @@ public class ClassesStdView extends JFrame {
     private SpringLayout layout;
     private  JScrollPane sp;
 
+    private JButton backBtn;
+
     private JLabel mssvLabel;
     private JLabel nameLabel;
     private JLabel sexLabel;
@@ -55,6 +57,7 @@ public class ClassesStdView extends JFrame {
         this.searchStdBtn = new JButton();
         this.searchClassId = new String();
         this.searchSubjectId = new String();
+        this.backBtn = new JButton();
         this.getLsClassesStd();
 
     }
@@ -123,9 +126,18 @@ public class ClassesStdView extends JFrame {
                 showStudent(students);
             }
         });
+        backBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuGiaoVuView menu = new MenuGiaoVuView();
+                menu.showViewGiaoVu();
+                setVisible(false);
 
+            }
+        });
 
         this.add(sp);
+        this.add(backBtn);
         this.add(mssvLabel);
         this.add(nameLabel);
         this.add(sexLabel);
@@ -202,6 +214,9 @@ public class ClassesStdView extends JFrame {
         layout.putConstraint(SpringLayout.NORTH, searchStdBtn, 300, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST, searchStdBtn, 10, SpringLayout.NORTH, this);
 
+        layout.putConstraint(SpringLayout.NORTH, backBtn, 350, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, backBtn, 10, SpringLayout.NORTH, this);
+
         this.setSize(750, 480);
         this.setVisible(true);
     }
@@ -247,7 +262,7 @@ public class ClassesStdView extends JFrame {
         cmndTF = new JTextField(15);
         this.setTitle("Danh sách sinh viên");
         addStdBtn.setText("Thêm mới sinh viên");
-
+        backBtn.setText("Trở lại");
     }
 
 

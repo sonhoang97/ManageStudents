@@ -123,37 +123,47 @@ public class MenuGiaoVuView extends JFrame{
             }
         });
 
+        logOutBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginView login = new LoginView();
+                login.showDialog();
+                setVisible(false);
+            }
+        });
+
         this.add(addClassesBtn);
         this.add(addScheduleBtn);
         this.add(getClassesBtn);
         this.add(getSchedules);
         this.add(addTranscriptsBtn);
         this.add(getTranscriptBtn);
+        this.add(logOutBtn);
         this.layout = new SpringLayout();
         this.setLayout(layout);
 
         layout.putConstraint(SpringLayout.NORTH, addClassesBtn, 10, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST, addClassesBtn, 10, SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.NORTH, addScheduleBtn, 40, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, addScheduleBtn, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.NORTH, addScheduleBtn, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, addScheduleBtn, 200, SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.NORTH, getClassesBtn, 40, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, getClassesBtn, 50, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.NORTH, getClassesBtn, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, getClassesBtn, 400, SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.NORTH, getSchedules, 40, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, getSchedules, 150, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.NORTH, getSchedules, 50, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, getSchedules, 10, SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.NORTH, addTranscriptsBtn, 40, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, addTranscriptsBtn, 190, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.NORTH, addTranscriptsBtn, 50, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, addTranscriptsBtn, 200, SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.NORTH, getTranscriptBtn, 80, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, getTranscriptBtn, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.NORTH, getTranscriptBtn, 50, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, getTranscriptBtn, 400, SpringLayout.NORTH, this);
 
-        layout.putConstraint(SpringLayout.NORTH, logOutBtn, 180, SpringLayout.NORTH, this);
-        layout.putConstraint(SpringLayout.WEST, logOutBtn, 10, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.NORTH, logOutBtn, 100, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, logOutBtn, 200, SpringLayout.NORTH, this);
 
-        this.setSize(300, 300);
+        this.setSize(600, 250);
         this.setVisible(true);
     }
     public void showViewGiaoVu() {

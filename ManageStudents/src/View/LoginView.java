@@ -61,14 +61,19 @@ public class LoginView extends JFrame implements ActionListener {
         // cài đặt vị trí các thành phần trên màn hình login
         layout.putConstraint(SpringLayout.WEST, userNameLabel, 20, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, userNameLabel, 80, SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, passwordlabel, 20, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, passwordlabel, 105, SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, userNameField, 80, SpringLayout.WEST, userNameLabel);
         layout.putConstraint(SpringLayout.NORTH, userNameField, 80, SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, passwordField, 80, SpringLayout.WEST, passwordlabel);
         layout.putConstraint(SpringLayout.NORTH, passwordField, 105, SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, loginBtn, 80, SpringLayout.WEST, passwordlabel);
         layout.putConstraint(SpringLayout.NORTH, loginBtn, 130, SpringLayout.NORTH, panel);
+
         layout.putConstraint(SpringLayout.WEST, cancelBtn, 160, SpringLayout.WEST, passwordlabel);
         layout.putConstraint(SpringLayout.NORTH, cancelBtn, 130, SpringLayout.NORTH, panel);
         // add panel tới JFrame
@@ -104,10 +109,14 @@ public class LoginView extends JFrame implements ActionListener {
             } else {
                 showMessage("username hoặc password không đúng.");
             }
+            setVisible(false);
         }
         else if(e.getActionCommand()=="Cancel"){
             setVisible(false);
         }
+    }
+    public void showDialog() {
+        setVisible(true);
     }
 
 }

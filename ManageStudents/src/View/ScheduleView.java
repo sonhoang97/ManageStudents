@@ -23,17 +23,19 @@ public class ScheduleView extends JFrame {
     private JButton searchScheduleBtn;
     private JLabel searchScheduleLabel;
     private String searchClassId;
-
+    private JButton backBtn;
     public ScheduleView(){
         this.schedulesTable = new JTable();
         this.searchScheduleBtn = new JButton();
         this.scheduleDAO = new ScheduleDAO();
         this.gvController = new GiaoVuController();
         searchClassId = new String();
+        this.backBtn = new JButton();
         excute();
     }
 
     public void excute(){
+        backBtn.setText("Trở lại");
         setText();
         List<Schedule> scheduleList = new ArrayList<>();
         scheduleList = scheduleDAO.getSchedules();
@@ -65,10 +67,19 @@ public class ScheduleView extends JFrame {
 
             }
         });
+        backBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                MenuGiaoVuView menu = new MenuGiaoVuView();
+                menu.showViewGiaoVu();
+                setVisible(false);
 
+            }
+        });
         schedulesTable.setBounds(30, 40, 200, 100);
         sp = new JScrollPane(schedulesTable);
         this.add(sp);
+        this.add(backBtn);
         this.add(searchScheduleLabel);
         this.add(searchClassCB);
         this.add(searchScheduleBtn);
@@ -85,6 +96,9 @@ public class ScheduleView extends JFrame {
 
         layout.putConstraint(SpringLayout.NORTH, sp, 10, SpringLayout.NORTH, this);
         layout.putConstraint(SpringLayout.WEST, sp, 250, SpringLayout.NORTH, this);
+
+        layout.putConstraint(SpringLayout.NORTH, backBtn, 50, SpringLayout.NORTH, this);
+        layout.putConstraint(SpringLayout.WEST, backBtn, 10, SpringLayout.NORTH, this);
         this.setSize(750, 300);
         this.setVisible(true);
     }
