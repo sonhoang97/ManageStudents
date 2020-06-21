@@ -16,7 +16,6 @@ import java.util.List;
 
 public class ClassesStdView extends JFrame {
     private JTable lsStudentTable;
-    private JPanel panel1;
     private GiaoVuController gvController;
     private JScrollPane jScrollPaneStudentTable;
     private JButton addStdBtn;

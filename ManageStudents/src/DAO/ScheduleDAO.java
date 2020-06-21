@@ -44,4 +44,19 @@ public class ScheduleDAO {
         }
         return true;
     }
+
+    public List<Schedule> getSchedulesByClass(String classId){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            String hql = "select sch from Schedule sch where  sch.classSch.Id = :classId";
+            Query query = session.createQuery(hql);
+            List<Schedule> SchData = query.setString("classId", classId).list();
+            return SchData;
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return new ArrayList<Schedule>();
+    }
 }

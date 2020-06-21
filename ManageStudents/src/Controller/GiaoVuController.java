@@ -113,7 +113,7 @@ public class GiaoVuController {
 
     // Todo
     public List<Schedule> getSchedulesByClass(String classId){
-        return null;
+        return scheduleDAO.getSchedulesByClass(classId);
     }
 
     public List<Subject> getSubjectsByClass(String classId){return subjectDAO.getSubjectsByClass(classId);}
