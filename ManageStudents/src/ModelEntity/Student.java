@@ -32,6 +32,14 @@ public class Student implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "studentTrans")
     private Set<Transcript> transcripts = new HashSet<Transcript>(0);
 
+    public Set<Transcript> getTranscripts() {
+        return transcripts;
+    }
+
+    public void setTranscripts(Set<Transcript> transcripts) {
+        this.transcripts = transcripts;
+    }
+
     public String getName() {
         return name;
     }

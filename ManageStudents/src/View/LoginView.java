@@ -1,6 +1,7 @@
 package View;
 
 import DAO.StudentDAO;
+import ModelEntity.Student;
 import ModelView.UserViewModel;
 
 import java.awt.event.ActionEvent;
@@ -91,20 +92,15 @@ public class LoginView extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getActionCommand() == "Login") {
             UserViewModel user = getUser();
-            if (user.Username == "giaovu" && user.Password == "giaovu") {
-                // Todo: giao dien giao vu
+            String gv = "giaovu";
+            if (user.Username.equals(gv) && user.Password.equals(gv)) {
+                MenuGiaoVuView menu = new MenuGiaoVuView();
+                menu.showViewGiaoVu();
             } else if (stdDAO.checkLogin(user)) {
-                //Todo: nếu đăng nhập thành công, mở màn hình quản lý sinh viên
-//                studentView = new StudentView();
-//                StudentController studentController = new StudentController(studentView);
-//                studentController.showStudentView();
-//                classesStdView = new ClassesStdView();
-//                    classesStdView.showClassStdView();
-//                scheduleView = new ScheduleView();
-//                scheduleView.showViewSchedule();
-                this.transcriptView = new TranscriptView();
-                this.transcriptView.showViewTranscript();
-                        setVisible(false);
+                Student std = stdDAO.getStudent(Integer.valueOf(user.Username));
+                YourTranscriptView ur = new YourTranscriptView(std);
+                ur.showDialog();
+                setVisible(false);
             } else {
                 showMessage("username hoặc password không đúng.");
             }
@@ -114,7 +110,4 @@ public class LoginView extends JFrame implements ActionListener {
         }
     }
 
-//    public void addLoginListener(ActionListener listener) {
-//        loginBtn.addActionListener(listener);
-//    }
 }
