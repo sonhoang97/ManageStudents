@@ -4,7 +4,11 @@ import ModelEntity.Class;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import util.HibernateUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClassDAO {
     public ClassDAO(){}
@@ -41,5 +45,20 @@ public class ClassDAO {
             session.close();
         }
         return cls;
+    }
+
+    public List<Class> getAllClasses(){
+        List<Class> clses = new ArrayList<Class>();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            String hql = "select cls from Class cls";
+            Query query = session.createQuery(hql);
+            clses = query.list();
+        } catch (HibernateException ex) {
+            System.err.println(ex);
+        } finally {
+            session.close();
+        }
+        return clses;
     }
 }

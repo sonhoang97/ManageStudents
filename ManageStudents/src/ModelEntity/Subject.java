@@ -1,10 +1,9 @@
 package ModelEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "subject")
@@ -15,6 +14,17 @@ public class Subject implements Serializable {
 
     @Column(name = "SubjectName")
     private String SubjectName;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "subjectSch")
+    private Set<Schedule> Schedules = new HashSet<Schedule>(0);
+
+    public Set<Schedule> getSchedules() {
+        return Schedules;
+    }
+
+    public void setSchedules(Set<Schedule> schedules) {
+        Schedules = schedules;
+    }
 
     public String getId() {
         return Id;

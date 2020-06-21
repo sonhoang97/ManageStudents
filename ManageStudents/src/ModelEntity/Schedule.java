@@ -13,11 +13,11 @@ public class Schedule implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ClassId", referencedColumnName = "Id")
-    private Class ClassSch;
+    private Class classSch;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SubjectId", referencedColumnName = "Id")
-    private Subject SubjectSch;
+    private Subject subjectSch;
 
     @Column(name = "Room")
     private String Room;
@@ -31,19 +31,19 @@ public class Schedule implements Serializable {
     }
 
     public Class getClassSch() {
-        return ClassSch;
+        return classSch;
     }
 
     public void setClassSch(Class classSch) {
-        ClassSch = classSch;
+        classSch = classSch;
     }
 
     public Subject getSubjectSch() {
-        return SubjectSch;
+        return subjectSch;
     }
 
     public void setSubjectSch(Subject subjectSch) {
-        SubjectSch = subjectSch;
+        subjectSch = subjectSch;
     }
 
     public String getRoom() {

@@ -19,15 +19,16 @@ public class Class implements Serializable {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classStd")
     private Set<Student> Students = new HashSet<Student>(0);
 
-//    private Set<Schedule> Schedules = new HashSet<Schedule>(0);
-//
-//    public Set<Schedule> getSchedules() {
-//        return Schedules;
-//    }
-//
-//    public void setSchedules(Set<Schedule> schedules) {
-//        Schedules = schedules;
-//    }
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "classSch")
+    private Set<Schedule> Schedules = new HashSet<Schedule>(0);
+
+    public Set<Schedule> getSchedules() {
+        return Schedules;
+    }
+
+    public void setSchedules(Set<Schedule> schedules) {
+        Schedules = schedules;
+    }
 
 
     public Set<Student> getStudents() {

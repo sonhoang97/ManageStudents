@@ -1,16 +1,15 @@
 package Controller;
 
-import DAO.ClassDAO;
-import DAO.ScheduleDAO;
-import DAO.StudentDAO;
-import DAO.excelDAO;
+import DAO.*;
 
 import ModelEntity.Class;
 import ModelEntity.Schedule;
 import ModelEntity.Student;
+import ModelEntity.Subject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class GiaoVuController {
@@ -18,12 +17,22 @@ public class GiaoVuController {
     private StudentDAO studentDAO;
     private ClassDAO classDAO;
     private ScheduleDAO scheduleDAO;
-
+    private SubjectDAO subjectDAO;
     public GiaoVuController() {
         this.excelDAO = new excelDAO();
         this.classDAO = new ClassDAO();
         this.scheduleDAO = new ScheduleDAO();
         this.studentDAO = new StudentDAO();
+        this.subjectDAO = new SubjectDAO();
+    }
+    public String[] getClassesId(){
+        List<Class> clses = classDAO.getAllClasses();
+        String[] strs = new String[clses.size()];
+        int i = 0;
+        for(Class cls: clses){
+            strs[i++] = cls.getId();
+        }
+        return strs;
     }
 
     public boolean addClasses() throws IOException {
@@ -77,15 +86,20 @@ public class GiaoVuController {
     public List<Student> getAllStudents(){
         return studentDAO.getStudents();
     }
-    // Todo
-    public boolean getStudentsByClass(String classId) {
-        return true;
+
+    public List<Student> getStudentsByClass(String classId) {
+        List<Student> stds = new ArrayList<Student>();
+        stds =  new ArrayList<>(classDAO.getClass(classId).getStudents());
+        return stds;
     }
 
-    // Todo
+    public Class getClass(String classId){
+        return classDAO.getClass(classId);
+    }
 
-    public boolean getSudentsBySubjectClass(String subjectId, String classId) {
-        return true;
+    //todo
+    public List<Student> getSudentsBySubjectClass(String subjectId, String classId) {
+        return new ArrayList<>();
     }
 
     public List<Schedule> getSchedules() {
@@ -102,5 +116,5 @@ public class GiaoVuController {
         return null;
     }
 
-
+    public List<Subject> getSubjectsByClass(String classId){return subjectDAO.getSubjectsByClass(classId);}
 }
